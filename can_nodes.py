@@ -19,7 +19,7 @@ try:
     while True:
         for can_id, name, base, noise, cycle in ecus:
             value = base + random.uniform(-noise, noise)
-            # Pack value as a float into 8 bytes
+            # Pack value as a float into 8 byte
             data = bytearray(8)
             data[0:4] = int(value * 100).to_bytes(4, byteorder='big', signed=True)
             msg = can.Message(arbitration_id=can_id, data=data, is_extended_id=False)
